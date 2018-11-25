@@ -1,9 +1,10 @@
 package com.techguys.headyecomapp
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+import android.os.Bundle
+import com.techguys.headyecomapp.ui.base.BaseActivity
+
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
