@@ -1,12 +1,10 @@
 package com.techguys.headyecomapp.ui.splash
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import com.techguys.headyecomapp.HeadyApplication
-import com.techguys.headyecomapp.MainActivity
 import com.techguys.headyecomapp.R
 import com.techguys.headyecomapp.data.local.*
 import com.techguys.headyecomapp.data.remote.WebService
@@ -15,7 +13,6 @@ import com.techguys.headyecomapp.ui.base.BaseActivity
 import com.techguys.headyecomapp.ui.categories.CategoriesActivity
 import com.techguys.headyecomapp.utils.isSavedInDB
 import com.techguys.headyecomapp.utils.savedInDB
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +33,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        (application as HeadyApplication).appComp!!.inject(this)
+        (application as HeadyApplication).appComp.inject(this)
         if (!isSavedInDB(sharedPreferences)) {
             webService.getEcommerceData().enqueue(object : Callback<ECommerceDataResponse> {
 
@@ -48,6 +45,7 @@ class SplashActivity : BaseActivity() {
 
                 override fun onFailure(call: Call<ECommerceDataResponse>, t: Throwable) {
                     showToast(t.message)
+                    finish()
                 }
 
             })
@@ -67,9 +65,9 @@ class SaveDataLocallyAsyncTask(
 ) :
     AsyncTask<ECommerceDataResponse, Void?, Void?>() {
 
-    var weakRef: WeakReference<Activity>? = null
+    var weakRef: WeakReference<SplashActivity>? = null
 
-    fun setActivity(activity: Activity) {
+    fun setActivity(activity: SplashActivity) {
         weakRef = WeakReference(activity)
     }
 
