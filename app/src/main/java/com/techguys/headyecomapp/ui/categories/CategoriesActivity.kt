@@ -10,7 +10,7 @@ import com.techguys.headyecomapp.data.local.HeadyEcomDatabase
 import com.techguys.headyecomapp.ui.base.BaseActivity
 import com.techguys.headyecomapp.ui.common.CategoriesRecyclerViewAdapter
 import com.techguys.headyecomapp.ui.common.RecyclerViewOnItemClickListener
-import com.techguys.headytest.ui.products.ProductsActivity
+import com.techguys.headyecomapp.ui.products.ProductsActivity
 import kotlinx.android.synthetic.main.activity_categories.*
 import javax.inject.Inject
 

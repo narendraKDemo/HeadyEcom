@@ -25,15 +25,20 @@ interface ProductDao {
 @Dao
 interface ProductVariantDao {
 
-    @Query("SELECT * FROM variants")
-    fun loadAllVariants(): List<Variant>
-
     @Insert
     fun insertVariant(variant: Variant): Long
 
     @Insert
     fun insertVariants(variant: List<Variant>): List<Long>
 
+    @Query("SELECT * FROM variants")
+    fun loadAllVariants(): List<Variant>
+
+    @Query("SELECT variant_id FROM variants where product_id is :productId")
+    fun loadVariantsIdsForProduct(productId: Long): LiveData<List<Long>>
+
+    @Query("SELECT * FROM variants where variant_id is :variantId")
+    fun loadVariant(variantId: Long): LiveData<Variant>
 }
 
 @Dao

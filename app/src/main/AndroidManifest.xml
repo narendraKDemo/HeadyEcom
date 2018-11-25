@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.categories.CategoriesActivity"/>
-        <activity android:name="com.techguys.headytest.ui.products.ProductsActivity"/>
+        <activity android:name=".ui.products.ProductsActivity"/>
+        <activity android:name=".ui.products.ProductDetailsActivity"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
-package com.techguys.headytest.ui.products
+package com.techguys.headyecomapp.ui.products
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,13 +10,12 @@ import com.techguys.headyecomapp.data.local.HeadyEcomDatabase
 import com.techguys.headyecomapp.ui.base.BaseActivity
 import com.techguys.headyecomapp.ui.common.GridItemDecoration
 import com.techguys.headyecomapp.ui.common.RecyclerViewOnItemClickListener
-import com.techguys.headyecomapp.ui.products.ProductsRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_products.*
 
 import javax.inject.Inject
 
 
-class ProductsActivity: BaseActivity(), RecyclerViewOnItemClickListener {
+class ProductsActivity : BaseActivity(), RecyclerViewOnItemClickListener {
 
     @Inject
     lateinit var database: HeadyEcomDatabase
@@ -53,6 +53,8 @@ class ProductsActivity: BaseActivity(), RecyclerViewOnItemClickListener {
 
 
     override fun onItemClick(position: Int) {
-
+        val intent = Intent(this, ProductDetailsActivity::class.java)
+        intent.putExtra("product_id", productsRecyclerViewAdapter.getItem(position).id)
+        startActivity(intent)
     }
 }
